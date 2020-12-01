@@ -1,0 +1,43 @@
+
+body{
+    font-family: "Century Gothic", sans-serif;
+    background: url('/public/images/img-avilys.jpg');
+    background-size: auto;
+}
+
+.btn{
+    border-radius: 5px;
+}
+    .register{
+        margin: 0 10px;
+        padding: 0 10px;
+        background: #f3bf8b;
+        border-radius: 50px;
+        transition: 0.3s;
+    }
+
+    .register:hover{
+        background: #ffdabe;
+        transition: 0.3s;
+    }
+.card-title{
+    /*font-family: "Century Gothic"*/
+    border-radius: 7px;
+    /*background: #ff9f00;*/
+    background: linear-gradient(
+        rgb(255, 159, 30, 0.9),
+        rgba(255, 255, 255, 0.1))
+}
+.card-body{
+    color: black;
+    background: white;
+    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+}
+    #cost{
+        margin-left: 10px;
+        /*color: #b17520;*/
+    }
+    #cost h4{display: inline}
+    #cost p{ display: inline;}
+
