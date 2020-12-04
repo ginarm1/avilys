@@ -20,6 +20,8 @@ $_SESSION['active'] = '';
         <div class="content p-3">
             @if($order == null )
                 <h3 class="mb-4">Jūs šiuo metu plano neturite</h3>
+            @elseif($order-> id > 0  && $order-> is_current_plan ==0)
+                <h3 class="mb-4">Jūs šiuo metu dabartinio plano neturite</h3>
             @elseif($order->id > 0 && $order-> is_approved == 2)
                 <h3 class="mb-4">Jūsų plano galiojimas baigėsi</h3>
                 <h3 class="mb-4">Kviečiame užsisakyti naują</h3>

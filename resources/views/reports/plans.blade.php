@@ -25,7 +25,9 @@
                 <th scope="col">Pardavimų kiekis</th>
                 <th scope="col">Sukūrimo data</th>
                 <th scope="col">Atnaujinimo data</th>
-                <th scope="col">Redaguoti planą</th>
+                @if(\Illuminate\Support\Facades\Auth::user()->fk_role == 3)
+                    <th scope="col">Redaguoti planą</th>
+                @endif
             </tr>
             </thead>
             <tbody>
@@ -41,8 +43,9 @@
                     <td>{{$plan -> sold_quantity}}</td>
                     <td>{{$plan -> created_at}}</td>
                     <td>{{$plan -> updated_at}}</td>
-                    <td><a href="../planai/{{$plan -> id}}/edit"><button class="btn btn-primary">Redaguoti</button></a></td>
-
+                    @if(\Illuminate\Support\Facades\Auth::user()->fk_role == 3)
+                        <td><a href="../planai/{{$plan -> id}}/edit"><button class="btn btn-primary">Redaguoti</button></a></td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>

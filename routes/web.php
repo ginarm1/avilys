@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PagesController@index');
 Route::get('/', 'PermitsController@show');
 
 // Mobiliuju rysiu planai [rodomi neprisijungus]

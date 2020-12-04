@@ -50,19 +50,10 @@
                 <input class="form-item" type="text" placeholder="Įveskite" name="name" value=<?php if (isset($_GET['name'])) echo $_GET['name']?>>
                 <input class="form-item" type="text" placeholder="Įveskite pavardę" id="surname-input2" name="surname" value=<?php if (isset($_GET['surname'])) echo $_GET['surname']?>>
             </div>
-{{--Ieškoma pagal datą (šiuo atveju nereikalinga)--}}
-{{--            <div class="box-3">--}}
-{{--                <label for="plan_end">Plano sukūrimo data (nuo - iki)</label>--}}
-{{--                <input type="date" id="plan_end_from" name="plan_end_from"--}}
-{{--                       value="2020-11-25"--}}
-{{--                       min="2020-10-01" max="2025-01-01">--}}
-{{--                <input type="date" id="plan_end_to" name="plan_end_to"--}}
-{{--                       value=""--}}
-{{--                       min="2020-10-01" max="2025-01-01" required>--}}
-{{--            </div>--}}
+
             <div class="box-4">
                 <label for="is_current">Ar dabar turi planą</label>
-                <input class="mr-3" id="is_current_plan" type="checkbox" value="1" name="is_current_plan">
+                <input class="mr-3" id="is_current_checked" type="checkbox" value="1" name="is_current_checked">
                 <input type="submit" value="Ieškoti" class=" btn btn-dark" id="search" name="search"><a href="#"></a>
                 <a href="../ataskaita/klientai"><input type="submit" class="btn btn-light" name="cancel" value="Atšaukti"></a>
             </div>
@@ -71,7 +62,7 @@
     </div>
 
 
-    <table class="table" id="clients" width="55%">
+    <table class="table" id="clients" style="width: 90%">
         <thead>
         <tr>
             <th scope="col">Klientų nr.</th>
@@ -83,14 +74,13 @@
             <th scope="col">Ar turi dabartinį planą</th>
             <th scope="col">Plano sukūrimo data</th>
             <th scope="col">Plano patvirtinimo data</th>
-{{--            <th scope="col">Paskyros sukūrimo data</th>--}}
             <th scope="col">Pašalinti naudotoją</th>
         </tr>
         </thead>
         <tbody>
         @foreach($users as $user)
 
-                <?php $new_ordered = '0000-00-00'; $accepted_date = '0000-00-00'; $plan_name = ''; $plan_id = 0;$is_current_plan = 0;?>
+                <?php $new_ordered = '0000-00-00'; $accepted_date = '0000-00-00'; $plan_name = ''; $plan_id = 0;$is_current_plan = null;?>
                 @foreach($orders as $order)
                     @if($user-> id == $order -> user_id)
                         <?php
@@ -98,23 +88,25 @@
                             $new_ordered = $order -> created_at;
                             $accepted_date = $order -> updated_at -> format('Y-m-d');
                             $plan_id = $order -> plan_id;
+
                             if($order -> is_current_plan == 1 && $order -> is_approved == 1){
                                 $is_current_plan = "Taip";
                             }
                             elseif($order -> is_current_plan == 1 && $order -> is_approved == 0)
                                 {
+//                                    echo $user -> name;
+//                                    echo $order -> id;
                                     $is_current_plan = "nepatvirtintas";
                                 }
                             elseif ($order -> is_current_plan == 2)
                                 {
                                     $is_current_plan = "baigėsi";
                                 }
-                            else{
-                                $is_current_plan = "Ne";
-                            }
                              $is_current_plan = strtoupper($is_current_plan);
                         ?>
+
                     @endif
+
                     @foreach($plans as $plan)
                         @if($plan_id == $plan -> id)
                             <?php $plan_name = $plan -> name; ?>
@@ -129,36 +121,34 @@
                         @include('reports.tables.table')
                     @elseif(isset($_GET['search']))
                     <tr>
-                        @if(isset($_GET['is_current']) && $_GET['is_current'] == 1)
+                        @if(isset($_GET['is_current_checked']) && $_GET['is_current_checked'] == 1 )
                             @switch($_GET['clients-type'])
                                 @case('name_and_surname')
                                 @if($user -> name == $_GET['name'] && $user -> surname == $_GET['surname']
-                                            && $is_current_plan == 1)
-                                    @include('reports.tables.table')
-
-
-
-                                @endif
-                                @break
-                                @case('name')
-                                @if($user -> name == $_GET['name'] && $is_current_plan == 1)
+                                            && $is_current_plan == "TAIP")
                                     <?php $_SESSION['client_delete'] = 1; ?>
                                     @include('reports.tables.table')
 
                                 @endif
                                 @break
+                                @case('name')
+                                @if($user -> name == $_GET['name'] && $is_current_plan == "TAIP" )
+                                    @include('reports.tables.table')
+
+                                @endif
+                                @break
                                 @case('surname')
-                                @if($user -> surname == $_GET['name'] && $is_current_plan == 1 )
+                                @if($user -> surname == $_GET['name'] && $is_current_plan == "TAIP" )
                                     @include('reports.tables.table')
                                 @endif
                                 @break
                                 @case('phone_nr')
-                                @if($user -> phone_nr == $_GET['name'] && $is_current_plan == 1 )
+                                @if($user -> phone_nr == $_GET['name'] && $is_current_plan == "TAIP" )
                                     @include('reports.tables.table')
                                 @endif
                                 @break
                                 @case('email')
-                                @if($user -> email == $_GET['name'] && $is_current_plan == 1 )
+                                @if($user -> email == $_GET['name'] && $is_current_plan == "TAIP" )
                                     @include('reports.tables.table')
                                 @endif
                                 @break

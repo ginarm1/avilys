@@ -10,9 +10,14 @@
         <td>{{$order->total_cost}}</td>
         <td>{{$is_plan_accepted}}</td>
         <td>{{$is_plan_current}}</td>
-        <td>{{$order-> updated_at}}</td>
-        <td>{{$plan_ends_at}}</td>
         @if($is_plan_accepted == "NE")
+            <td>NEPATVIRTINTA</td>
+            @else
+            <td>{{$order-> updated_at}}</td>
+        @endif
+
+        <td>{{$plan_ends_at}}</td>
+        @if($is_plan_accepted == "NE" && \Illuminate\Support\Facades\Auth::user()->fk_role == 3)
             <td><a href="../uzsakymas/{{$order->id}}/edit"> <button class="btn btn-success">Patvirtinti</button></a></td>
         @endif
     </tr>

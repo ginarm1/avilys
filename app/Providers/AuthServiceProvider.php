@@ -36,12 +36,19 @@ class AuthServiceProvider extends ServiceProvider
             }
             return false;
         });
-        Gate::define('clients',function ($user){
+        Gate::define('not-guests',function ($user){
             if($user -> fk_role > 0 ){
                 return true;
             }
             return false;
         });
+        Gate::define('not-clients',function ($user){
+            if($user -> fk_role > 1 ){
+                return true;
+            }
+            return false;
+        });
+
 
     }
 }

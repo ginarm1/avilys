@@ -61,9 +61,9 @@
                                             @endif
                                         </div>
                                         <p>Su {{$plan->evaluation_time}} mėn. sutartimi</p>
-                                        @if($order == null)
-                                            <p>Užsakymo nėra</p>
-                                        @endif
+{{--                                        @if($order == null)--}}
+{{--                                            <p>Užsakymo nėra</p>--}}
+{{--                                        @endif--}}
 
                                         @if($order != null)
                                             <?php if($order -> is_approved == 0 && $order->is_current_plan == 1)
@@ -79,6 +79,8 @@
                                                 }
                                                 else{
                                                     $btn_name = "Tęskite";
+//                                                    echo $order -> is_approved;
+//                                                    echo $order -> is_current_plan;
                                                 }
                                                 echo '<a href="/Projects/avilys/public/uzsakymas/create" style="text-decoration: none;color: white"><button class="btn btn-success mt-3" style="width: 95%; border-radius: 20px;">'.$btn_name.'</button></a>';
                                             }
@@ -89,15 +91,6 @@
                                         @endif
 
 
-
-                                        @if(Gate::allows('managers-only',Auth::user()))
-                                            <a href="./{{$plan->id}}/edit" style="text-decoration: none;color: white"><button class="btn btn-light mt-3" style="width: 95%; border-radius: 20px;">Redaguoti</button></a>
-                                            <button class="btn btn-danger m-3" id="btn_delete">Pašalinti</button>
-                                            {!! Form::open(['action' => ['PlansController@destroy', $plan->id],'method'=>'POST' , 'class' => 'mt-3']) !!}
-                                            {{Form::hidden('_method','DELETE')}}
-                                            {{Form::submit('PATVIRTINTI',['class' => 'btn btn-danger', 'id'=>'btn_delete_real'])}}
-                                            {!! Form::close() !!}
-                                        @endif
                                         @if(Gate::allows('administrators-only',Auth::user()))
                                             <a href="./{{$plan->id}}/edit" style="text-decoration: none;color: white"><button class="btn btn-light mt-3" style="width: 95%; border-radius: 20px;">Redaguoti</button></a>
                                             <button class="btn btn-danger m-3" id="btn_delete">Pašalinti</button>

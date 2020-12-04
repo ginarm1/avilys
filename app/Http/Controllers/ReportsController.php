@@ -87,9 +87,4 @@ class ReportsController extends Controller
         return redirect('../')->with('success','Naudotojas sėkmingai pašalintas');
     }
 
-    public function confirmUserDelete($id){
-        $user = User::find($id);
-        return view('reports.confirm',compact('user'));
-    }
-
 }

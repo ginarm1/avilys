@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ApproveMail;
 use App\Model\Plan;
 use App\Models\Order;
-use http\Client\Curl\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Mail;
 class OrdersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display an order that user currently has
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
@@ -23,6 +23,7 @@ class OrdersController extends Controller
     public function index()
     {
         $user_id  = Auth::user()->id;
+//        Atvirkštine tvarka rikiuojamas, kad naujausias užsakymas būtų pirmas
         $order = Order::where( 'user_id',$user_id) -> orderBy('id','desc') -> first();
 
 
@@ -32,20 +33,22 @@ class OrdersController extends Controller
             $plan_id = $order->plan_id;
 
             $plan = Plan::all() -> where('id',$plan_id) -> first();
-
-            if($order -> is_current_plan == 1 && $order -> ends_at < Carbon::now()){
-
+            // Jeigu galiojimo laikas yra pasibaigęs, dabartinis planas atšaukiamas (is current plan = 0)
+            if($order -> is_current_plan == 1 && $order -> ends_at < Carbon::now())
+            {
                 $order = Order::find($order_id);
                 $order->is_current_plan = 0;
                 $order->is_approved = 2;
+//                is approved = 1 - administratoriaus patvirtintas užsakymas
+//                is approved = 2 - užsakymo galiojimo laikas yra pasibaigęs
                 $order->save();
 
                 return redirect('../uzsakymas')->with('success','Užsakymo galiojimas baigtas');
             }
             return view('orders.index',compact('order','plan','user_id'));
         }
-
-        return view('orders.index',compact('order','plan','user_id'));
+        if(Auth::user()->fk_role > 0)
+            return view('orders.index',compact('order','plan','user_id'));
     }
 
     /**
@@ -73,7 +76,8 @@ class OrdersController extends Controller
             $has_current_plan = true;
             return view('orders.create', compact('plan','has_current_plan'));
         }
-        return view('orders.create', compact('plan','has_current_plan'));
+        if(Auth::user()->fk_role > 0)
+            return view('orders.create', compact('plan','has_current_plan'));
 
     }
 
@@ -95,7 +99,7 @@ class OrdersController extends Controller
         $order -> plan_id = $request -> input('plan_id');
         $order -> user_id = $request -> input('user_id');
 
-//        Find the plan and increase sold quantity
+//        Surasti planą ir padidinti to plano pardavimų skaičių
         $plan = Plan::find($request -> input('plan_id'));
         $plan -> sold_quantity = $request -> input('plan_sold_quantity');
         $plan -> save();
@@ -112,7 +116,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        $order = Order::find($id);
+//        $order = Order::find($id);
     }
 
     /**
@@ -125,19 +129,20 @@ class OrdersController extends Controller
     public function edit($id)
     {
         $order = Order::find($id);
-        $orders = Order::find($id)->get('id');
+
+        $user = User::where('id',$order->user_id) -> get('id');
+
+        $user_id = $user[0]->id;
 
 //        Panaikina dabartinio užsakymo galiojimą
-        $not_current_order = Order::where('user_id',2)->where('is_current_plan',1) -> update(['is_current_plan' => 0]);
+        $not_current_order = Order::where('user_id',$user_id)->where('is_current_plan',1) -> update(['is_current_plan' => 0]);
         $plan = Plan::where('id',$order->plan_id)->get('evaluation_time')->first();
         $expiration_date = Carbon::now()->addMonths($plan->evaluation_time);
 
 //        Atnaujiną užsakymą, kuris tampa dabartiniu
-        $approve_order = Order::where('user_id',2)->where('id',$order->id)->
+        $approve_order = Order::where('user_id',$user_id)->where('id',$order->id)->
             update(['is_current_plan' => 1,'is_approved'=>1,'ends_at'=> $expiration_date]);
 
-
-//        return view('orders.edit',compact('order','orders','expiration_date','plan_eval'));
 //        Išsiunčiamas laiškas užsakymo patvirtinimo
         $user_email  = Auth::user()-> email;
         Mail::to($user_email)->send(new ApproveMail());

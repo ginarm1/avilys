@@ -115,10 +115,6 @@
                     }
                     ?>
 
-                    @if(Gate::allows('managers-only',Auth::user()))
-{{--                    @if(Auth::user()->fk_role > 1)--}}
-                        <a class="nav-link" href="{{url('planai/create')}}">Sukurti planą</a>
-                    @endif
                     @if(Gate::allows('administrators-only',Auth::user()))
 {{--                    @if(Auth::user()->fk_role > 1)--}}
                         <a class="nav-link" href="{{url('planai/create')}}">Sukurti planą</a>

@@ -11,7 +11,7 @@ class PermitsController extends Controller
 {
     public function show(){
 
-        $role = Role::find(2);
+        $role = Role::find(1);
 
         return view('pages.index')->with('role',$role);
 

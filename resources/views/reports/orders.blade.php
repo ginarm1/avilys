@@ -67,7 +67,9 @@
                 <th scope="col">Ar dabartinis</th>
                 <th scope="col">Plano patvirtinimo data</th>
                 <th scope="col">Plano galiojimo pabaiga</th>
+                @if(Gate::allows('administrators-only',Auth::user()))
                 <th scope="col">Patvirtinti planą</th>
+                @endif
             </tr>
             </thead>
             <tbody>

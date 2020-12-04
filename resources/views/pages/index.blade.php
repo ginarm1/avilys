@@ -58,6 +58,7 @@
                             <li class="list-group-item">Pašalinti klientą</li>
                             <li class="list-group-item">Peržiūrėti klientų duomenis</li>
                             <li class="list-group-item">Peržiūrėti planų ataskaitą</li>
+                            <li class="list-group-item">Patvirtinti užsakymą</li>
                         </ul>
                 @endif
 

@@ -30,7 +30,11 @@ class PlansController extends Controller
      */
     public function create()
     {
-        return view('plans.create');
+        if(Auth::user()->fk_role >1){
+            return view('plans.create');
+        }else {
+            abort(404);
+        }
     }
 
     /**
@@ -84,7 +88,11 @@ class PlansController extends Controller
         $request->session()->put('plan_evaluation', $plan -> evaluation_time);
         $request->session()->put('plan_sold_quantity', $plan -> sold_quantity);
 
-        return view('plans.show',compact('plan','order'));
+        if(Auth::user()->fk_role >0){
+            return view('plans.show',compact('plan','order'));
+        }else {
+            abort(404);
+        }
     }
 
     /**
@@ -96,6 +104,11 @@ class PlansController extends Controller
     public function edit($id)
     {
         $plan = Plan::find($id);
+        if(Auth::user()->fk_role >2){
+            return view('plans.show',compact('plan','order'));
+        }else {
+            abort(404);
+        }
         return view('plans.edit')->with('plan',$plan);
     }
 
@@ -137,8 +150,10 @@ class PlansController extends Controller
      */
     public function destroy($id)
     {
-        $plan = Plan::find($id);
-        $plan->delete();
-        return redirect('/planai')->with('success','Planas ištrintas');
+        if(Auth::user()->fk_role >2) {
+            $plan = Plan::find($id);
+            $plan->delete();
+            return redirect('/planai')->with('success', 'Planas ištrintas');
+        }
     }
 }
