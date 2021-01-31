@@ -19,14 +19,4 @@ $ php artisan migrate
 
 ```
 
-After cloning the project, install npm package and Vue.js
-
-```
-
-$ npm install
-$ npm install vue
-$ npm run watch
-
-```
-
 MySQL data can be found in file: avilys.sql
