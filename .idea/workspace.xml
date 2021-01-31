@@ -6,27 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcec19f5-bdd2-4e65-8b33-a83a732820fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_31_154322_create_permits_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_31_154335_create_permit_role_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_31_154350_create_roles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermitsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PermitsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlansController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlansController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/acc_settings.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/plans/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/plans/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/clients.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/clients.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/confirm.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/orders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/plans.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/plans.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/tables/table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/tables/table.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/test/2020_11_16_162650_create_order_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_16_162650_create_order_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/update/2020_11_16_162719_create_plan_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_16_162719_create_plans_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,30 +138,34 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1k5hd3tbxyQ8sVzHmdhHE5McZtx" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/reports" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\XAMPP\htdocs\Projects\avilys" />
+      <recent name="D:\XAMPP\htdocs\Projects\avilys\resources\views\reports" />
+      <recent name="D:\XAMPP\htdocs\Projects\avilys\resources\views\plans" />
+      <recent name="D:\XAMPP\htdocs\Projects\avilys\resources\views\order" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\XAMPP\htdocs\Projects\avilys\database\migrations" />
       <recent name="D:\XAMPP\htdocs\Projects\avilys\database\migrations\update" />
       <recent name="D:\XAMPP\htdocs\Projects\avilys\database\migrations\new" />
       <recent name="D:\XAMPP\htdocs\Projects\avilys\database\migrations\test" />
       <recent name="D:\XAMPP\htdocs\Projects\avilys\public\images" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\XAMPP\htdocs\Projects\avilys\resources\views\reports" />
-      <recent name="D:\XAMPP\htdocs\Projects\avilys\resources\views\plans" />
-      <recent name="D:\XAMPP\htdocs\Projects\avilys\resources\views\order" />
     </key>
   </component>
   <component name="RunManager">
@@ -249,6 +239,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="586" y="198" key="#Inspections" timestamp="1605297867242">
