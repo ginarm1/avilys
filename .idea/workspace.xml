@@ -6,13 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcec19f5-bdd2-4e65-8b33-a83a732820fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_31_154322_create_permits_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_31_154335_create_permit_role_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_31_154350_create_roles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/test/2020_11_16_162650_create_order_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_16_162650_create_order_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/update/2020_11_16_162719_create_plan_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_16_162719_create_plans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2020_11_16_162650_create_order_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2020_11_16_162719_create_plans_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2021_01_31_154322_create_permits_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2021_01_31_154335_create_permit_role_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2021_01_31_154350_create_roles_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_14_162103_update_fk_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_19_151908_update_order.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_29_181303_add_deleted_at_to_users_table.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
