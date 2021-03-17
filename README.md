@@ -11,7 +11,7 @@ Tai yra svetainė, kurioje klientas gali prisiregistruoti, užsisakyti planą, j
 
 ```
 
-$ git clone https://github.com/ginarm1/Parabrace
+$ git clone https://github.com/ginarm1/avilys
 
 $ composer install
 
