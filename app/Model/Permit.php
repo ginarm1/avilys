@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Model;
 
 use App\Model\Role;
-use App\Model\Roles_leidimai;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
